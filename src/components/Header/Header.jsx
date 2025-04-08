@@ -1,16 +1,19 @@
 import React from "react";
 import { Card } from "../ui/card";
+import { Link } from "react-router-dom";
+  
 
 const Header = () => {
   return (
-    <div className="container mx-auto">
-      <Card className="p-4">
+    <header className="container mx-auto my-6">
+      <Card className="p-4 shadow-md">
         <div className="flex justify-center items-center">
-            <h1>Main Kaun?</h1>
+          <Link to ="/" className="text-3xl font-bold tracking-wide text-blue-600 rounded-2xl border-2 border-blue-700 px-2 py-1">MK?</Link>
         </div>
       </Card>
-    </div>
+    </header>
   );
 };
 
 export default Header;
+  

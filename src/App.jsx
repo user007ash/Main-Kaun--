@@ -1,10 +1,9 @@
-import { Button } from "@/components/ui/button";
-import { Layout } from "./components/Layout";
+import Layout from "./components/Layout/Layout";
 
 function App() {
   return (
     <>
-      <div className="bg-cyan-700 h-screen">
+      <div className="bg-cyan-800 h-screen">
         <Layout/>
       </div>
     </>
