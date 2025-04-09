@@ -4,7 +4,7 @@ import { Github, Linkedin, Twitter } from "lucide-react";
 
 const Footer = () => {
   return (
-    <footer className="container mx-auto my-6 ">
+    <footer className="container mx-auto my-6">
       <Card className="p-4 ">
         <div className="flex justify-between items-center">
           <h1 className="text-lg font-semibold text-blue-600">Main Kaun?</h1>
