@@ -1,7 +1,6 @@
 import { cn } from "@/lib/utils";
 import React from "react";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 import { Link } from 'react-router-dom'
 const genres = [
   ["Marvel", "DCU", "Anime", "Movie"],
@@ -21,22 +20,17 @@ export function Home() {
       />
       <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)] dark:bg-black"></div>
       <div className="z-10 flex flex-col justify-center items-center">
-        <Badge
-          className="text-4xl mb-6 bg-blue-400 border-2 border-blue-200"
-          variant="default"
-        >
-          Select a Genre
-        </Badge>
-        <div className="grid grid-rows-3 gap-4 ">
+        <Button className="text-5xl px-8 py-8 text-center" variant="noShadow" size="lg">Select a Genre</Button>
+        <div className="grid grid-rows-3 gap-4 mt-8 ">
           {genres.map((row, rowIndex) => (
-            <div key={rowIndex} className="flex justify-center gap-2">
+            <div key={rowIndex} className="flex justify-center gap-2 ">
               {row.map((genre, index) => (
-                <Link key={index} to={`/CharacterGuess/${genre.toLowerCase()}`}>
-                  <Button className="text-3xl">{genre}</Button>
+                <Link key={index} to={`/CharacterGuess/${genre}`}>
+                  <Button className="text-3xl cursor-pointer">{genre}</Button>
                 </Link>
               ))}
             </div>
-          ))}
+          ))} 
         </div>
       </div>
     </div>
