@@ -1,13 +1,31 @@
 import { cn } from "@/lib/utils";
-import React from "react";
+import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Link } from 'react-router-dom'
+import { Link } from "react-router-dom";
+
 const genres = [
   ["Marvel", "DCU", "Anime", "Movie"],
   ["Cartoon", "TV Series", "Sports"],
   ["Youtube", "Games", "Music", "WWE"],
 ];
+
 export function Home() {
+  const [selectedGenre, setSelectedGenre] = useState(null);
+  const [data, setData] = useState(null);
+
+  useEffect(() => {
+    if (!selectedGenre) return;
+
+    fetch("http://localhost:5000/api/random-character", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ genre: selectedGenre }),
+    })
+      .then((res) => res.json())
+      .then(setData)
+      .catch(console.error);
+  }, [selectedGenre]);
+
   return (
     <div className="flex-col flex-grow justify-center items-center relative flex w-full bg-blue-300 dark:bg-black">
       <div
@@ -20,17 +38,28 @@ export function Home() {
       />
       <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)] dark:bg-black"></div>
       <div className="z-10 flex flex-col justify-center items-center">
-        <Button className="text-5xl px-8 py-8 text-center" variant="noShadow" size="lg">Select a Genre</Button>
+        <Button
+          className="text-5xl px-8 py-8 text-center"
+          variant="noShadow"
+          size="lg"
+        >
+          Select a Genre
+        </Button>
         <div className="grid grid-rows-3 gap-4 mt-8 ">
           {genres.map((row, rowIndex) => (
-            <div key={rowIndex} className="flex justify-center gap-2 ">
+            <div key={rowIndex} className="flex justify-center gap-2">
               {row.map((genre, index) => (
                 <Link key={index} to={`/CharacterGuess/${genre}`}>
-                  <Button className="text-3xl cursor-pointer">{genre}</Button>
+                  <Button
+                    className="text-3xl cursor-pointer"
+                    onClick={() => setSelectedGenre(genre)}
+                  >
+                    {genre}
+                  </Button>
                 </Link>
               ))}
             </div>
-          ))} 
+          ))}
         </div>
       </div>
     </div>
