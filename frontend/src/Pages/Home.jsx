@@ -1,13 +1,23 @@
 import { cn } from "@/lib/utils";
-import React from "react";
+import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Link } from 'react-router-dom'
+import { Link } from "react-router-dom";
+
 const genres = [
   ["Marvel", "DCU", "Anime", "Movie"],
   ["Cartoon", "TV Series", "Sports"],
   ["Youtube", "Games", "Music", "WWE"],
 ];
+
 export function Home() {
+  useEffect(() => {
+    const fetchCharactersNames = async () => {
+      const res = await fetch("/getCharacterName");
+      const data = await res.json();
+      console.log("Character Name is:", data);
+    };
+  }, []);
+
   return (
     <div className="flex-col flex-grow justify-center items-center relative flex w-full bg-blue-300 dark:bg-black">
       <div
@@ -20,7 +30,13 @@ export function Home() {
       />
       <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)] dark:bg-black"></div>
       <div className="z-10 flex flex-col justify-center items-center">
-        <Button className="text-5xl px-8 py-8 text-center" variant="noShadow" size="lg">Select a Genre</Button>
+        <Button
+          className="text-5xl px-8 py-8 text-center"
+          variant="noShadow"
+          size="lg"
+        >
+          Select a Genre
+        </Button>
         <div className="grid grid-rows-3 gap-4 mt-8 ">
           {genres.map((row, rowIndex) => (
             <div key={rowIndex} className="flex justify-center gap-2 ">
@@ -30,7 +46,7 @@ export function Home() {
                 </Link>
               ))}
             </div>
-          ))} 
+          ))}
         </div>
       </div>
     </div>
