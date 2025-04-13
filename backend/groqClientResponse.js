@@ -4,12 +4,13 @@ dotenv.config();
 
 const groq = new Groq({ apiKey: process.env.GROQ_API_KEY });
 
-export const getRandomCharactersWithHints = async () => {
+export const getCharacterWithHints = async (selectedGenre) => {
+
   const completion = await groq.chat.completions.create({
     messages: [
       {
         role: "user",
-        content: `For each of the following genres: ["Marvel", "Anime", "Games", "WWE", "Cartoon"], pick a random character from each. For every character, return 5 subtle hints (25 words max each) in this JSON format: { genre: { character: "name", hints: ["hint1", "hint2", ...] } }`
+        content: `Pick a random character from the ${selectedGenre} genre and return 20 subtle hints (25 words max each) in the following format : { "character": "name", "hints": ["hint1", "hint2", ...] } and there should be nothing else than this in response.`
       }
     ],
     model: "meta-llama/llama-4-scout-17b-16e-instruct",

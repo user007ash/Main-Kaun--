@@ -20,7 +20,6 @@ export const CharacterGuess = () => {
     reset,
   } = useForm();
 
-  // Redirect when guesses run out
   useEffect(() => {
     if (guessesLeft === 0) {
       navigate("/Result", {
@@ -34,7 +33,6 @@ export const CharacterGuess = () => {
   }, [guessesLeft, navigate]);
 
   const onSubmit = (data) => {
-    // Logic to check if guess is correct can be added here
     setCharacterGuessed(data.guessInput);
 
     setGuessesLeft((prev) => Math.max(prev - 1, 0));
@@ -43,7 +41,6 @@ export const CharacterGuess = () => {
 
   return (
     <Card className="relative flex flex-col flex-grow justify-center items-center rounded-3xl bg-blue-300 dark:bg-black">
-      {/* Grid background */}
       <div
         className={cn(
           "absolute inset-0",
@@ -53,12 +50,10 @@ export const CharacterGuess = () => {
         )}
       />
 
-      {/* Radial fade mask */}
       <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)] dark:bg-black" />
 
-      {/* Main Content */}
       <div className="z-10 flex flex-wrap justify-center text-center text-4xl">
-        {/* Genre Panel */}
+
         <Card className="px-4 border-r-2 rounded-r-none">
           <CardTitle>{genre}</CardTitle>
           <CardContent className="text-center">
@@ -66,7 +61,6 @@ export const CharacterGuess = () => {
           </CardContent>
         </Card>
 
-        {/* Interaction Panel */}
         <Card className="flex flex-col items-center px-8 border-l-2 rounded-l-none">
           <CardTitle>
             Ask Questions <br />

@@ -15,16 +15,16 @@ export function Home() {
 
   useEffect(() => {
     if (!selectedGenre) return;
-
-    fetch("http://localhost:5000/api/random-character", {
-      method: "POST",
+  
+    fetch(`http://localhost:5000/api/random-character/${selectedGenre}`, {
+      method: "GET",  
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ genre: selectedGenre }),
     })
       .then((res) => res.json())
       .then(setData)
       .catch(console.error);
   }, [selectedGenre]);
+  
 
   return (
     <div className="flex-col flex-grow justify-center items-center relative flex w-full bg-blue-300 dark:bg-black">
