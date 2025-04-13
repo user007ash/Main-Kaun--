@@ -16,7 +16,7 @@ export function Home() {
   useEffect(() => {
     if (!selectedGenre) return;
   
-    fetch(`http://localhost:5000/api/random-character/${selectedGenre}`, {
+    fetch(`https://main-kaun-game-1.onrender.com/${selectedGenre}`, {
       method: "GET",  
       headers: { "Content-Type": "application/json" },
     })
