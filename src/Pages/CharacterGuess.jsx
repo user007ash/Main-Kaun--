@@ -31,7 +31,7 @@ export const CharacterGuess = () => {
         },
       });
     }
-  }, [guessesLeft, navigate,characterGuessed,genre]);
+  }, [guessesLeft, navigate]);
 
   const onSubmit = (data) => {
     // Logic to check if guess is correct can be added here

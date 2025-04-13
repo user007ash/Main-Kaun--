@@ -1,15 +1,16 @@
 import React from "react";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { useLocation } from "react-router-dom";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import {useLocation } from "react-router-dom";
 import { cn } from "@/lib/utils";
 import { User } from "lucide-react";
 import { useState } from "react";
 
 export const Result = () => {
+
   const { won, setWon } = useState(false);
 
   const location = useLocation();
-  const { characterGuessed, guessesLeft, genre } = location.state || {};
+  const { characterGuessed, guessesLeft,genre } = location.state || {};
   console.log(characterGuessed, guessesLeft);
 
   return (
@@ -33,16 +34,13 @@ export const Result = () => {
           <CardTitle>{genre}</CardTitle>
           <CardContent className="text-center">
             <User className="h-24 w-24 border-4 rounded-t-2xl  " />
-            {/* <p>{characterGuessed}</p> */}
           </CardContent>
         </Card>
         <Card className="px-8 border-l-2 rounded-l-none flex-col items-center">
-          <CardTitle>
-            {won && guessesLeft > 0 ? "You Won" : "You Loss"}
-          </CardTitle>
-          <CardDescription className="flex">
-            {`Remaining Guesses are: ${guessesLeft}`}
-          </CardDescription>
+          <CardTitle>{won ? "You Won" : "You Loss"}</CardTitle>
+          <CardContent className="flex">
+            {guessesLeft}
+          </CardContent>
         </Card>
       </div>
     </Card>
