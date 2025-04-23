@@ -1,7 +1,3 @@
-Got it! Here's the regenerated and polished `README.md` for your project, correctly using the name **Main-Kaun** (always in brackets):
-
----
-
 # 🧠 Main-Kaun
 
 **Main-Kaun** is a fun twist on the classic guessing game. In this version, **you** ask the questions — and the AI gives you intelligent hints to help you guess the character! Think of it as **Reverse Akinator**, where you're in control, powered by a blazing-fast LLM backend.
@@ -136,4 +132,4 @@ Thanks to Groq Cloud for providing an ultra-low-latency LLama model experience a
 
 MIT — free to use, modify, and distribute.
 
---
+---
